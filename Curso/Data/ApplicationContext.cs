@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Curso.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,7 +19,8 @@ namespace CursoEFCore.Data
             optionsBuilder
             .UseLoggerFactory(_logger)
             .EnableSensitiveDataLogging()
-            .UseSqlServer("Data source = (localdb)\\mssqllocaldb; Initial Catalog = CursoEFCore; Integrated Security=true");
+            .UseSqlServer("Data source = (localdb)\\mssqllocaldb; Initial Catalog = CursoEFCore; Integrated Security=true",
+                p=>p.EnableRetryOnFailure(maxRetryCount: 2, maxRetryDelay: TimeSpan.FromSeconds(5), errorNumbersToAdd: null));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +28,23 @@ namespace CursoEFCore.Data
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
 
+        }
+
+        private void MapearPropriedadesEsquecidas(ModelBuilder modelBuilder)
+        {
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                var properties = entity.GetProperties().Where(p => p.ClrType == typeof(string));
+
+                foreach (var property in properties)
+                {
+                    if (string.IsNullOrEmpty(property.GetColumnType()) && !property.GetMaxLength().HasValue)
+                    {
+                        //property.SetMaxLength(100);
+                        property.SetColumnType("VARCHAR(100)");
+                    }
+                }
+            }
         }
 
     }
