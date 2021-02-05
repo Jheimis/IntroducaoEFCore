@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Curso.Domain;
 using Curso.ValueObjects;
@@ -24,8 +25,115 @@ namespace CursoEFCore
             }*/
 
             //InserirDados();
+            //InserirDadosEmMassa();
+            //ConsultarDados();
+            //CadastraPedido();
+            //ConsultarPedidoCarregamentoAdiantado();
+            //AtualizarDados();
+            RemoverRegistro();
+        }
 
-            InserirDadosEmMassa();
+        private static void RemoverRegistro()
+        {
+            using var db = new Data.ApplicationContext();
+            //var cliente = db.Clientes.Find(2);
+            var cliente = new Cliente {Id = 3};
+
+            //db.Clientes.Remove(cliente);
+            //db.Remove(cliente);
+            //db.Entry(cliente).State = EntityState.Deleted;
+
+            db.SaveChanges();
+        }
+
+        private static void AtualizarDados()
+        {
+            using var db = new Data.ApplicationContext();
+
+            //var cliente = db.Clientes.Find(1);
+
+            var cliente = new Cliente
+            {
+                Id = 1
+            };
+
+            var clienteDesconectado = new
+            {
+                Nome = "Cliente Desconectado",
+                Telefone = "79666699"
+            };
+
+            db.Attach(cliente);
+            db.Entry(cliente).CurrentValues.SetValues(clienteDesconectado);
+
+            //db.Clientes.Update(cliente); Comentado esse codigo ele atuliza somente oque foi alterado
+            db.SaveChanges();
+        }
+
+        private static void ConsultarPedidoCarregamentoAdiantado()
+        {
+            using var db = new Data.ApplicationContext();
+            var pedidos = db.Pedidos
+               .Include(p => p.Itens)
+                   .ThenInclude(p => p.Produto)
+               .ToList();
+
+            Console.WriteLine(pedidos.Count);
+        }
+
+        private static void CadastraPedido()
+        {
+            using var db = new Data.ApplicationContext();
+
+            var cliente = db.Clientes.FirstOrDefault();
+            var produto = db.Produtos.FirstOrDefault();
+
+            var pedido = new Pedido
+            {
+                ClienteId = cliente.Id,
+                InciadoEm = DateTime.Now,
+                FinalizadoEm = DateTime.Now,
+                Observacao = "Pedido Teste",
+                Status = StatusPedido.Analise,
+                TipoFrete = TipoFrete.SemFrete,
+                Itens = new List<PedidoItem>
+                {
+                    new PedidoItem
+                    {
+                        ProdutoId = produto.Id,
+                        Desconto = 0,
+                        Quantidade = 1,
+                        Valor = 10,
+                    }
+                }
+            };
+
+            db.Pedidos.Add(pedido);
+
+            db.SaveChanges();
+        }
+
+        private static void ConsultarDados()
+        {
+            using var db = new Data.ApplicationContext();
+
+            //var consultaPorSintaxe = (from c in db.Clientes where c.Id>0 select c).ToList();
+            var consultaPorMetodo = db.Clientes
+                .Where(p => p.Id > 0)
+                .OrderBy(p => p.Id)
+                .ToList();
+
+            foreach (var cliente in consultaPorMetodo)
+            {
+                /*Consulta sendo realizada na memoria
+                Console.WriteLine($"Consultando CLiente: {cliente.Id}");
+                db.Clientes.Find(cliente.Id);*/
+
+                //Consulta sendo realizada no banco de dados
+                Console.WriteLine($"Consultando CLiente: {cliente.Id}");
+                db.Clientes.FirstOrDefault(p => p.Id == cliente.Id);
+
+            }
         }
 
         private static void InserirDadosEmMassa()
