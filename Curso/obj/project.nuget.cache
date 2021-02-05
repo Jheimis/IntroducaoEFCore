@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6ktQjVx87r/VN77Tj41zOVzYn0yyaDAZczijS+csIwnpiw+l6TFAICMhqDG+s4H8QbHB/zf5ARz2PqQZ+5lbUw==",
+  "dgSpecHash": "x14WzCkrRoohKAE/Dc57fdnAfNRR5Sl+AGXgsGSH5wWfzdo73d/9NJoeysXM26rTX/twgm+h2t7bR43K17YR5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jheimis Marques\\source\\repos\\introducao\\Curso\\CursoEFCore.csproj",
   "expectedPackageFiles": [
@@ -24,7 +24,10 @@
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.5\\microsoft.extensions.dependencyinjection.abstractions.3.1.5.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.logging\\3.1.5\\microsoft.extensions.logging.3.1.5.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.5\\microsoft.extensions.logging.abstractions.3.1.5.nupkg.sha512",
+    "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.logging.configuration\\3.1.5\\microsoft.extensions.logging.configuration.3.1.5.nupkg.sha512",
+    "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.logging.console\\3.1.5\\microsoft.extensions.logging.console.3.1.5.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.options\\3.1.5\\microsoft.extensions.options.3.1.5.nupkg.sha512",
+    "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\3.1.5\\microsoft.extensions.options.configurationextensions.3.1.5.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.identity.client\\3.0.8\\microsoft.identity.client.3.0.8.nupkg.sha512",
     "C:\\Users\\Jheimis Marques\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",

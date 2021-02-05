@@ -46,3 +46,6 @@ C:\Users\Jheimis Marques\source\repos\introducao\Curso\obj\Debug\netcoreapp3.1\C
 C:\Users\Jheimis Marques\source\repos\introducao\Curso\obj\Debug\netcoreapp3.1\CursoEFCore.dll
 C:\Users\Jheimis Marques\source\repos\introducao\Curso\obj\Debug\netcoreapp3.1\CursoEFCore.pdb
 C:\Users\Jheimis Marques\source\repos\introducao\Curso\obj\Debug\netcoreapp3.1\CursoEFCore.genruntimeconfig.cache
+C:\Users\Jheimis Marques\source\repos\introducao\Curso\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\Jheimis Marques\source\repos\introducao\Curso\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
+C:\Users\Jheimis Marques\source\repos\introducao\Curso\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
